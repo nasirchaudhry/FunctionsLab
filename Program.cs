@@ -10,7 +10,7 @@ namespace FunctionsLab
     {
         enum review
         {
-            approved, rejected, escalated
+            approved = 3, rejected = 1, escalated = 2
         };
 
         static void Main(string[] args)
@@ -24,13 +24,11 @@ namespace FunctionsLab
             Console.WriteLine("Enter cost of item to expense: ");
             cost = double.Parse(Console.ReadLine());
 
-            decision = firstLevel(cost, item);
-            decision = secondLevel(cost, item);
-            decision = thirdLevel(cost, item);
-            decision = fourthLevel(cost, item);
+            firstLevel(cost, item);
+            Console.ReadLine();
 
         }
-        public static int firstLevel(double c, string i) 
+        public static void firstLevel(double c, string i) 
         {
             int choice = 0;            
             if (i.Contains("entertainment"))
@@ -49,16 +47,17 @@ namespace FunctionsLab
             }
             if (choice == (int)review.escalated)
             {
+                Console.WriteLine("Escalating to Second Level Manager");
                 secondLevel(c, i);
             }
             else
             {
                 decisionMade(choice);
             }
-            return choice;
+            
 
         }
-        public static int secondLevel(double c, string i)
+        public static void secondLevel(double c, string i)
         {
             int choice = 0;
             if (i.Contains("towncars"))
@@ -77,15 +76,16 @@ namespace FunctionsLab
             }
             if (choice == (int)review.escalated)
             {
+                Console.WriteLine("Escalating to director");
                 thirdLevel(c, i);
             }
             else
             {
+                
                 decisionMade(choice);
             }
-            return choice;
         }
-        public static int thirdLevel(double c, string i)
+        public static void thirdLevel(double c, string i)
         {
             int choice = 0;
             if (i.Contains("hardware"))
@@ -104,33 +104,35 @@ namespace FunctionsLab
             }
             if (choice == (int)review.escalated)
             {
+                Console.WriteLine("Escalating to CEO");
                 fourthLevel(c, i);
             }
             else
             {
+                
                 decisionMade(choice);
             }
-            return choice;
         }
-        public static int fourthLevel(double c, string i)
+        public static void fourthLevel(double c, string i)
         {
             int choice = 0;
             
             Console.WriteLine("Enter 1 to reject or 3 to approve");
             choice = int.Parse(Console.ReadLine());
-            
-            return choice;
+
+            decisionMade(choice);
+;
         }
         public static void decisionMade(int choice) 
         {
             switch(choice)
             {
-                case 0:
+                case (int)review.approved:
                     {
                         Console.WriteLine("Expense is approved");
                         break;
                     }
-                case 1:
+                case (int)review.rejected:
                     {
                         Console.WriteLine("Expense is rejected");
                         break;

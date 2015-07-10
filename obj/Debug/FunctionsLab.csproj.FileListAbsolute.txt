@@ -1,6 +1,5 @@
 c:\users\dell user\documents\visual studio 2013\Projects\FunctionsLab\FunctionsLab\bin\Debug\FunctionsLab.exe.config
 c:\users\dell user\documents\visual studio 2013\Projects\FunctionsLab\FunctionsLab\bin\Debug\FunctionsLab.exe
 c:\users\dell user\documents\visual studio 2013\Projects\FunctionsLab\FunctionsLab\bin\Debug\FunctionsLab.pdb
-c:\users\dell user\documents\visual studio 2013\Projects\FunctionsLab\FunctionsLab\obj\Debug\FunctionsLab.csprojResolveAssemblyReference.cache
 c:\users\dell user\documents\visual studio 2013\Projects\FunctionsLab\FunctionsLab\obj\Debug\FunctionsLab.exe
 c:\users\dell user\documents\visual studio 2013\Projects\FunctionsLab\FunctionsLab\obj\Debug\FunctionsLab.pdb
