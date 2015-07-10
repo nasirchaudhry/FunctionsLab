@@ -47,7 +47,7 @@ namespace FunctionsLab
                 Console.WriteLine("Enter 1 to reject or 2 to escalate and 3 to approve");
                 choice = int.Parse(Console.ReadLine());
             }
-            if (choice == review.escalated)
+            if (choice == (int)review.escalated)
             {
                 secondLevel(c, i);
             }
@@ -75,7 +75,7 @@ namespace FunctionsLab
                 Console.WriteLine("Enter 1 to reject or 2 to escalate and 3 to approve");
                 choice = int.Parse(Console.ReadLine());
             }
-            if (choice == review.escalated)
+            if (choice == (int)review.escalated)
             {
                 thirdLevel(c, i);
             }
@@ -102,7 +102,7 @@ namespace FunctionsLab
                 Console.WriteLine("Enter 1 to reject or 2 to escalate and 3 to approve");
                 choice = int.Parse(Console.ReadLine());
             }
-            if (choice = review.escalated)
+            if (choice == (int)review.escalated)
             {
                 fourthLevel(c, i);
             }
@@ -121,7 +121,7 @@ namespace FunctionsLab
             
             return choice;
         }
-        public static string decisionMade(int choice) 
+        public static void decisionMade(int choice) 
         {
             switch(choice)
             {
@@ -139,8 +139,7 @@ namespace FunctionsLab
                     {
                         break;
                     }
-            }
-                
+            }                
         }
     }
 }
