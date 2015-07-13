@@ -6,6 +6,15 @@ using System.Threading.Tasks;
 
 namespace FunctionsLab
 {
+    /// <summary>
+    /// This program would approve or reject expense, each level of management can only approve expense upto a certain amount
+    /// 1st Level Manager can approve any expense upto $250 but won't approve entertainment
+    /// 2nd Level Manager can approve any expense upto $500 but won't approve towncars
+    /// Director can approve any expense uptop $1000 but won't approve hardware>5000
+    /// CEO could approve anything
+    /// </summary>
+
+    //start class program
     class Program
     {
         enum review
@@ -13,34 +22,38 @@ namespace FunctionsLab
             approved = 3, rejected = 1, escalated = 2
         };
 
+        //start main method
         static void Main(string[] args)
         {
+            //Declare variables
             double cost = 0;
             string item = " ";
-            int decision = 0;
-            //string userInput = "no";
-            Console.WriteLine("Enter description of expense: ");
+
+            //Prompt user to enter the description & cost of item
+            Console.WriteLine("Please enter description of expense: ");
             item = Console.ReadLine();
-            Console.WriteLine("Enter cost of item to expense: ");
+            Console.WriteLine("Please enter cost of item to expense: ");
             cost = double.Parse(Console.ReadLine());
 
-            firstLevel(cost, item);
+            firstLevelManager(cost, item);
             Console.ReadLine();
 
-        }
-        public static void firstLevel(double c, string i) 
+        }//End main method
+
+        //Declaring conditions for 1st Level manager authority
+        public static void firstLevelManager(double c, string i)
         {
-            int choice = 0;            
+            int choice = 0;
             if (i.Contains("entertainment"))
             {
                 choice = (int)review.rejected;
             }
-            else if (c > 250) 
+            else if (c > 250)
             {
                 Console.WriteLine("Enter 1 to reject or 2 to escalate");
                 choice = int.Parse(Console.ReadLine());
             }
-            else 
+            else
             {
                 Console.WriteLine("Enter 1 to reject or 2 to escalate and 3 to approve");
                 choice = int.Parse(Console.ReadLine());
@@ -48,16 +61,16 @@ namespace FunctionsLab
             if (choice == (int)review.escalated)
             {
                 Console.WriteLine("Escalating to Second Level Manager");
-                secondLevel(c, i);
+                secondLevelManager(c, i);
             }
             else
             {
                 decisionMade(choice);
             }
-            
-
         }
-        public static void secondLevel(double c, string i)
+
+        //Declaring conditions for 2nd Level manager authority
+        public static void secondLevelManager(double c, string i)
         {
             int choice = 0;
             if (i.Contains("towncars"))
@@ -77,15 +90,16 @@ namespace FunctionsLab
             if (choice == (int)review.escalated)
             {
                 Console.WriteLine("Escalating to director");
-                thirdLevel(c, i);
+                directorLevel(c, i);
             }
             else
             {
-                
                 decisionMade(choice);
             }
         }
-        public static void thirdLevel(double c, string i)
+
+        //Declaring conditions for Director authority
+        public static void directorLevel(double c, string i)
         {
             int choice = 0;
             if (i.Contains("hardware"))
@@ -105,27 +119,29 @@ namespace FunctionsLab
             if (choice == (int)review.escalated)
             {
                 Console.WriteLine("Escalating to CEO");
-                fourthLevel(c, i);
+                ceoLevel(c, i);
             }
             else
             {
-                
                 decisionMade(choice);
             }
         }
-        public static void fourthLevel(double c, string i)
+
+        //Declaring conditions for CEO authority
+        public static void ceoLevel(double c, string i)
         {
             int choice = 0;
-            
+
             Console.WriteLine("Enter 1 to reject or 3 to approve");
             choice = int.Parse(Console.ReadLine());
 
-            decisionMade(choice);
-;
+            decisionMade(choice); ;
         }
-        public static void decisionMade(int choice) 
+
+        //start function decisionMade
+        public static void decisionMade(int choice)
         {
-            switch(choice)
+            switch (choice)
             {
                 case (int)review.approved:
                     {
@@ -141,7 +157,7 @@ namespace FunctionsLab
                     {
                         break;
                     }
-            }                
-        }
-    }
-}
+            }
+        }//end function decisionMade
+    }//end Class Program
+}//end namespace FunctionsLab
